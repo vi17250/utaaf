@@ -4,8 +4,9 @@ import { type Response } from "express";
 
 @Controller()
 export class AppController {
-    @Get("*")
+    @Get()
     landingPage(@Res() res: Response) {
         return res.sendFile(join(__dirname, "..", "client", "main.html"));
     }
+
 }
