@@ -20,6 +20,31 @@ describe('AppController (e2e)', () => {
     return request(app.getHttpServer())
       .get('/')
       .expect(200)
-      .expect('Hello World!');
+      .expect('<!DOCTYPE html>\n' +
+      '<html>\n' +
+      '    <head>\n' +
+      '        <title>Le titre de ma page HTML</title>\n' +
+      '    </head>\n' +
+      '    <body>\n' +
+      '        <h1>utaaf 🐶</h1>\n' +
+      '        <p>Url To Ascii Art Format</p>\n' +
+      '    </body>\n' +
+      '</html>');
+  });
+
+  it('/other-path (GET)', () => {
+    return request(app.getHttpServer())
+      .get('/')
+      .expect(200)
+      .expect('<!DOCTYPE html>\n' +
+      '<html>\n' +
+      '    <head>\n' +
+      '        <title>Le titre de ma page HTML</title>\n' +
+      '    </head>\n' +
+      '    <body>\n' +
+      '        <h1>utaaf 🐶</h1>\n' +
+      '        <p>Url To Ascii Art Format</p>\n' +
+      '    </body>\n' +
+      '</html>');
   });
 });
