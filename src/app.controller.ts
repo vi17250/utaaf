@@ -1,4 +1,4 @@
-import { Controller, Get, Res } from "@nestjs/common";
+import { Controller, Get, Res, Post } from "@nestjs/common";
 import { join } from "node:path";
 import { type Response } from "express";
 
@@ -9,4 +9,8 @@ export class AppController {
         return res.sendFile(join(__dirname, "..", "client", "main.html"));
     }
 
+    @Post()
+    create(): string {
+        return "This action returns ascii format of image";
+    }
 }
