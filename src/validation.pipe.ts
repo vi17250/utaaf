@@ -19,7 +19,7 @@ export class UrlValidationPipe implements PipeTransform {
         const object = plainToInstance(metatype, value);
         const errors = await validate(object);
         if (errors.length > 0) {
-            throw new BadRequestException("Validation failed, oups...");
+            throw new BadRequestException("URL validation failed");
         }
         return value;
     }
