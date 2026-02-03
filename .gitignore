@@ -3,6 +3,9 @@
 /node_modules
 /build
 
+#production output
+/images
+
 # Logs
 logs
 *.log
