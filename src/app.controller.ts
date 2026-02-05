@@ -26,6 +26,11 @@ export class AppController {
         return res.sendFile(join(__dirname, "..", "client", "main.html"));
     }
 
+    @Get("favicon.ico")
+    favicon(@Res() res: Response) {
+        return res.json({ message: "I don't have favicon yet" });
+    }
+
     @Get("images")
     async findAll(): Promise<Image[]> {
         return this.appService.findAll();
