@@ -10,8 +10,8 @@ import {
 import { join } from "node:path";
 import { type Response } from "express";
 
-import { UrlDto } from "./url.dto";
-import { UrlValidationPipe } from "./validation.pipe";
+import { UrlDto } from "./dto/url.dto";
+import { UrlValidationPipe } from "./pipes/urValidation.pipe";
 
 import { Image } from "./images/interfaces/image.interface";
 
