@@ -34,7 +34,6 @@ export class AllExceptionsFilter implements ExceptionFilter {
             method: request.method,
             url: request.originalUrl,
             ip: request.ip,
-            custom: "Message créé par mon `Exception filter`",
             ...(exception instanceof Error && {
                 message: exception.message,
                 stack: exception.stack,
