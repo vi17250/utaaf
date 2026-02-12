@@ -23,7 +23,7 @@ export class AppController {
 
     @Get()
     landingPage(@Res() res: Response) {
-        return res.sendFile(join(__dirname, "..", "client", "main.html"));
+        return res.sendFile(join(__dirname, "../..", "client", "main.html"));
     }
 
     @Get("favicon.ico")
