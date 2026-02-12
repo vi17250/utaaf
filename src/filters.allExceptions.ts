@@ -18,7 +18,7 @@ export class AllExceptionsFilter implements ExceptionFilter {
         const response = ctx.getResponse<Response>();
         const request = ctx.getRequest<RequestUUID>();
 
-        const requestId = request.requestId;
+        const traceId = request.traceId;
 
         const status = exception instanceof HttpException
             ? exception.getStatus()
@@ -26,11 +26,11 @@ export class AllExceptionsFilter implements ExceptionFilter {
 
         const clientPayload = {
             error: HttpStatus[status],
-            requestId,
+            traceId,
         };
 
         const logObject: Record<string, any> = {
-            requestId,
+            traceId,
             method: request.method,
             url: request.originalUrl,
             ip: request.ip,
@@ -43,7 +43,7 @@ export class AllExceptionsFilter implements ExceptionFilter {
             }),
         };
 
-        this.logger.error(`Error ${requestId}`, JSON.stringify(logObject));
+        this.logger.error(`Error ${traceId}`, JSON.stringify(logObject));
         response.status(status).json(clientPayload);
     }
 }
