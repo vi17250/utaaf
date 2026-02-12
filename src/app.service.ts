@@ -1,17 +1,12 @@
 import { Injectable } from "@nestjs/common";
-import { Image } from "./images/interfaces/image.interface";
+import { type ImageResponse } from "./images/interfaces/image.interface";
 import { FetchAndSave } from "./images/services/image.service";
 
 @Injectable()
 export class AppService {
-    private readonly images: Image[] = [];
 
-    async create(image: Image) {
-        await FetchAndSave(image.url);
-        this.images.push(image);
-    }
-
-    findAll(): Image[] {
-        return this.images;
+    async create(image_url: string): Promise<ImageResponse> {
+        const imageResponse = await FetchAndSave(image_url);
+        return imageResponse;
     }
 }
