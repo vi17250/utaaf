@@ -13,10 +13,10 @@ export async function FetchAndSave(url: string): Promise<void> {
     }
     const buffer = await response.arrayBuffer();
     const image = Buffer.from(buffer);
-    const imageformat = fileTypeValidator(image);
-    const image_name = uuidv4().concat(`.${imageformat}`);
+    const imageFormat = fileTypeValidator(image);
+    const imageName = uuidv4().concat(`.${imageFormat}`);
     await writeFile(
-        join(DATA_ROOT, `${image_name}`),
+        join(DATA_ROOT, `${imageName}`),
         image,
     );
 }
