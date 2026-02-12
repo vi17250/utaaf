@@ -3,7 +3,9 @@ import { join } from "path";
 import { v4 as uuidv4 } from "uuid";
 import { fileTypeValidator } from "../utils/fileTypeValidator";
 
-export async function FetchAndSave(url: string): Promise<void> {
+import { type ImageResponse } from "../interfaces/image.interface";
+
+export async function FetchAndSave(url: string): Promise<ImageResponse> {
     const DATA_ROOT = join(process.cwd(), "images");
     await mkdir(DATA_ROOT, { recursive: true });
 
@@ -19,4 +21,5 @@ export async function FetchAndSave(url: string): Promise<void> {
         join(DATA_ROOT, `${imageName}`),
         image,
     );
+    return { name: imageName, buffer: image };
 }
