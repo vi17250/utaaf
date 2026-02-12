@@ -13,7 +13,7 @@ import { type Response } from "express";
 import { UrlDto } from "./dto/url.dto";
 import { UrlValidationPipe } from "./pipes/urValidation.pipe";
 
-import { Image } from "./images/interfaces/image.interface";
+import { type ImageResponse } from "./images/interfaces/image.interface";
 
 import { AppService } from "./app.service";
 
@@ -31,19 +31,15 @@ export class AppController {
         return res.json({ message: "I don't have favicon yet" });
     }
 
-    @Get("images")
-    async findAll(): Promise<Image[]> {
-        return this.appService.findAll();
-    }
-
     @Post()
-    async create(@Body(new UrlValidationPipe()) url: UrlDto) {
-        const image: Image = {
-            url: url.incoming_value,
-        };
+    async create(
+        @Body(new UrlValidationPipe()) url: UrlDto,
+    ): Promise<ImageResponse> {
         try {
-            await this.appService.create(image);
-            return `This action will returns ascii format of image url: ${url.incoming_value}`;
+            const imageResponse: ImageResponse = await this.appService.create(
+                url.incoming_value,
+            );
+            return imageResponse;
         } catch (e) {
             console.error(e);
             throw new HttpException(
