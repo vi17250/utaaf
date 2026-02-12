@@ -1,4 +1,4 @@
 import { Request } from "express";
 
-type UUID = { requestId?: string };
+type UUID = { traceId?: string };
 export type RequestUUID = Request & UUID;

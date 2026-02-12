@@ -8,7 +8,7 @@ import { type RequestUUID } from "src/types/request";
 export class RequestIdMiddleware implements NestMiddleware {
     use(req: RequestUUID, res: Response, next: NextFunction) {
         const uuid: string = uuidv4();
-        req.requestId = uuid;
+        req.traceId = uuid;
         next();
     }
 }
