@@ -7,12 +7,12 @@ mod server;
 use server::create::unix_socket;
 
 const SOCKET_PATH: &str = "/home/victor/nest_rust.sock";
-const MAX_SIZE_IN_MB: usize = 10;
+const HEADER_LENGTH: usize = 4;
 
-#[derive(Serialize, Deserialize)]
-struct Message {
-    id: u8,
-    payload: String,
+#[derive(Serialize, Deserialize, Debug)]
+struct BufferResponse {
+    payload_len: usize,
+    buffer_len: usize,
 }
 
 #[tokio::main]
@@ -33,21 +33,23 @@ async fn main() -> io::Result<()> {
 async fn handle_client(mut stream: UnixStream) -> io::Result<()> {
     println!("🔗 Client connecté");
 
-    let mut buffer = vec![0_u8; 1024 * MAX_SIZE_IN_MB];
-    // https://docs.rs/tokio/latest/tokio/io/trait.AsyncReadExt.html
-    let buffer_size = stream.read(&mut buffer).await?;
-    let payload = &buffer[..buffer_size];
-    let message = String::from_utf8_lossy(payload);
-    dbg!(message);
+    let mut header = [0_u8; HEADER_LENGTH];
+    stream.read_exact(&mut header).await?;
+    let payload_len = u32::from_be_bytes(header) as usize;
+    let mut buffer = vec![0_u8; payload_len];
+    stream.read_exact(&mut buffer).await?;
+    let buffer_len = buffer.len();
 
-    let payload = Message {
-        id: 42,
-        payload: "Bonjour depuis Rust 🦀".into(),
+    let response = BufferResponse {
+        payload_len,
+        buffer_len,
     };
 
-    let response = serde_json::to_string(&payload)?;
-    let bytes = response.as_bytes();
-    stream.write_all(bytes).await?;
+    let response_str = serde_json::to_string(&response)?;
+    dbg!(&response_str);
+
+    stream.write_all(response_str.as_bytes()).await?;
     stream.flush().await?;
+
     Ok(())
 }
