@@ -22,7 +22,9 @@ export class ImageService {
         const buffer = await response.arrayBuffer();
         const image = Buffer.from(buffer);
         const imageFormat = fileTypeValidator(image);
-        this.socket.send(image);
+        const data = await this.socket.send(image);
+        const jsonData = JSON.parse(data.toString());
+        console.log({ jsonData });
         const imageName = uuidv4().concat(`.${imageFormat}`);
         await writeFile(
             join(DATA_ROOT, `${imageName}`),
