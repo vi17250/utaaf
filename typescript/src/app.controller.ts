@@ -7,8 +7,9 @@ import {
     Post,
     Res,
 } from "@nestjs/common";
-import { join } from "node:path";
 import { type Response } from "express";
+
+import { html } from "src/index";
 
 import { UrlDto } from "./dto/url.dto";
 import { UrlValidationPipe } from "./pipes/urValidation.pipe";
@@ -23,7 +24,7 @@ export class AppController {
 
     @Get()
     landingPage(@Res() res: Response) {
-        return res.sendFile(join(__dirname, "../..", "client", "main.html"));
+        return res.send(html);
     }
 
     @Get("favicon.ico")
