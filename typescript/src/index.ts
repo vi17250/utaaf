@@ -8,7 +8,7 @@ export const html = `
 </head>
 
 <body>
-    <h1>utaaf 🐶</h1>
+    <h1>utaaf 🐣</h1>
     <h2>Url To Ascii Art Format</h2>
     <form action="/" method="post">
         <label for="url">Enter a image URL:</label>
