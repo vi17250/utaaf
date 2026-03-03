@@ -1,0 +1,4 @@
+Dockerfile
+.dockerignore
+/typescript/node_modules
+/typescript/dist

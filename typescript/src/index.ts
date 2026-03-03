@@ -1,3 +1,4 @@
+export const html = `
 <!DOCTYPE html>
 <html>
 
@@ -11,9 +12,9 @@
     <h2>Url To Ascii Art Format</h2>
     <form action="/" method="post">
         <label for="url">Enter a image URL:</label>
-        <input type="text" id="url" name="incoming_value" value="https://jeanmarccoudour.photography/7fdc6db874ab5f0cf14ee2d9e843949a.jpg" />
+        <input type="text" id="url" name="incoming_value"/>
         <input type="submit" value="Submit">
     </form>
 </body>
 
-</html>
+</html>`;
