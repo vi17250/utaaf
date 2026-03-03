@@ -22,34 +22,10 @@ It's just a little web server to play with unix socket and ascii art and discove
 
 ## Installation
 
-### Prerequisites
-
-Install [NestJs](https://docs.nestjs.com/first-steps)
-```bash
-npm i -g @nestjs/cli
-```
-
-Install [Rustup](https://rustup.rs/)
-```bash
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-```
-
-### Run
-
-You need to start both server
-
-#### Rust
+### Usage
 
 ```bash
-cd rust/
-cargo run
-```
-
-#### NestJs
-
-```bash
-cd typescript/
-npm run start 
+docker compose up
 ```
 
 #### An then...
