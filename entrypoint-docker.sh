@@ -1,10 +1,6 @@
 #!/bin/sh
 
-# Used for starting docker image 
-
-# Start Rust server
-# exec ./rust-server
-
-# Start nest service
-
-node app/typescript/src/main.js
+echo "1️⃣ start web server" 
+node app/typescript/src/main.js &
+echo "2️⃣ start ascii server" 
+exec app/rust/ascii-server
