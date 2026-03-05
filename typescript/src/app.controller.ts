@@ -14,8 +14,6 @@ import { html } from "src/index";
 import { UrlDto } from "./dto/url.dto";
 import { UrlValidationPipe } from "./pipes/urValidation.pipe";
 
-import { type ImageResponse } from "./images/interfaces/image.interface";
-
 import { AppService } from "./app.service";
 
 @Controller()
@@ -35,12 +33,18 @@ export class AppController {
     @Post()
     async create(
         @Body(new UrlValidationPipe()) url: UrlDto,
-    ): Promise<ImageResponse> {
+        @Res({ passthrough: true }) res: Response,
+    ): Promise<void> {
         try {
-            const imageResponse: ImageResponse = await this.appService.create(
+            const imageResponse: string = await this.appService.create(
                 url.incoming_value,
             );
-            return imageResponse;
+            res.setHeader("Content-Type", "text/plain; charset=utf-8");
+            res.setHeader(
+                "Content-Disposition",
+                'attachment; filename="image.txt"',
+            );
+            res.send(imageResponse);
         } catch (e) {
             console.error(e);
             throw new HttpException(
