@@ -2,7 +2,7 @@ import { join } from "path";
 
 const packagePath = join(process.cwd(), "package.json");
 const packageInfo = require(packagePath);
-
+//Comment
 export const html = `
 <!DOCTYPE html>
 <html>
