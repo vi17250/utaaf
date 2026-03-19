@@ -12,11 +12,9 @@
 ///
 /// # Exemple
 /// ```rust
-///
-/// fn main()  {
 ///     let value = to_char(20);
 ///     println!("{}", value);
-/// }
+/// ```
 pub fn to_char(element: u8) -> &'static str {
     let index = (element / 32) as usize;
     let ascii: [&str; 8] = [".", ",", ";", "-", "~", "+", "=", "@"];
