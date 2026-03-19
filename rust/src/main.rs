@@ -8,7 +8,7 @@ use std::{env, io};
 mod server;
 use server::create::unix_socket;
 use server::handle::generate_ascii;
-
+//comment
 mod ascii;
 
 const HEADER_LENGTH: usize = 4;

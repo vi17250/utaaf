@@ -26,16 +26,7 @@ jobs:
           config-file: .github/release-please-config.json
           manifest-file: .github/.release-please-manifest.json
 
-      - name: Debug release status
-        run: |
-          echo "Release created: ${{ steps.release.outputs.release_created }}"
-          echo "Major: ${{ steps.release.outputs.major }}"
-          echo "Minor: ${{ steps.release.outputs.minor }}"
-          echo "Patch: ${{ steps.release.outputs.patch }}"
-
       - name: Update compose.yml
-        if: steps.release.outputs.release_created == 'true'
         run: |
-          VERSION="${{ steps.release.outputs.major }}.${{ steps.release.outputs.minor }}.${{ steps.release.outputs.patch }}"
-          echo "Version: $VERSION"
-          sed -i "s|image: utaaf:[0-9.]*|image: utaaf:$VERSION|" compose.yml
+          VERSION=${{ steps.release.outputs.version }}
+          echo "Coucou $VERSION"
