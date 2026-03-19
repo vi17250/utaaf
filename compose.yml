@@ -2,7 +2,7 @@ services:
   utaaf-app:
     build:
       context: .
-    image: 0.0.1
+    image: 0.1.0
     container_name: utaaf_container
     ports:
-      - "3000:3000"
+      - '3000:3000'
