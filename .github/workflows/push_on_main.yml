@@ -19,23 +19,16 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Update compose.yml with commit SHA
+        run: |
+          SHORT_SHA="${{ github.sha }}"
+          VERSION="${SHORT_SHA:0:7}"
+          echo "Commit: $VERSION"
+          sed -i -E "s|image: utaaf_image:*|image: utaaf_image:$VERSION|" compose.yml
+
       - uses: googleapis/release-please-action@v4
         id: release
         with:
           token: ${{ secrets.RELEASE_PLEASE }}
           config-file: .github/release-please-config.json
           manifest-file: .github/.release-please-manifest.json
-
-      - name: Debug release status
-        run: |
-          echo "Release created: ${{ steps.release.outputs.release_created }}"
-          echo "Major: ${{ steps.release.outputs.major }}"
-          echo "Minor: ${{ steps.release.outputs.minor }}"
-          echo "Patch: ${{ steps.release.outputs.patch }}"
-
-      - name: Update compose.yml
-        if: steps.release.outputs.release_created == 'true'
-        run: |
-          VERSION="${{ steps.release.outputs.major }}.${{ steps.release.outputs.minor }}.${{ steps.release.outputs.patch }}"
-          echo "Version: $VERSION"
-          sed -i "s|image: utaaf:[0-9.]*|image: utaaf:$VERSION|" compose.yml
