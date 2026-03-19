@@ -4,7 +4,7 @@
 //! - a unix socket server listening and waiting for a stream
 //! - a tool using to convert image buffer array to ascii art 
 use std::{env, io};
-// Comment
+// Commentt
 mod server;
 use server::create::unix_socket;
 use server::handle::generate_ascii;
