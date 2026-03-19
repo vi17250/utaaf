@@ -14,12 +14,10 @@ use image::Rgba;
 /// # Exemple
 /// ```rust
 /// use image::Rgba;
-///
-/// fn main()  {
 ///     let rgba = Rgba([128, 21, 21, 10]);
 ///     let value = to_average_rgb(rgba);
 ///     println!("{}", rgba);
-/// }
+/// ``
 pub fn to_average_rgb(pixel: Rgba<u8>) -> u8 {
     let sum: u16 = pixel[0] as u16 + pixel[1] as u16 + pixel[2] as u16;
     let result = sum / 3;
