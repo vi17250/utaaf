@@ -8,7 +8,16 @@
           "path": "typescript/package.json",
           "jsonpath": "version"
         },
-        { "type": "toml", "path": "rust/Cargo.toml", "jsonpath": "$.package.version" }
+        {
+          "type": "toml",
+          "path": "rust/Cargo.toml",
+          "jsonpath": "$.package.version"
+        },
+        {
+          "type": "yaml",
+          "path": "compose.yml",
+          "jsonpath": "$.services['utaaf-app'].image"
+        }
       ]
     }
   },
