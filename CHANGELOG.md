@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/vi17250/utaaf/compare/v1.0.0...v1.1.0) (2026-03-19)
+
+
+### Features
+
+* 🎸 initial ([de858af](https://github.com/vi17250/utaaf/commit/de858af359a1ae9bc214653416ad3297bde8e4fd))
+
 ## 1.0.0 (2026-03-19)
 
 
