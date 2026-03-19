@@ -3,7 +3,7 @@ services:
     build:
       context: .
     image_name: utaaf
-    image_tag: 0.1.0
+    image_tag: 0.2.0
     container_name: utaaf_container
     ports:
       - '3000:3000'
