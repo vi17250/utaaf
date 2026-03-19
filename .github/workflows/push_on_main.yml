@@ -1,0 +1,39 @@
+name: _PUSH_ on main
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: googleapis/release-please-action@v4
+        id: release
+        with:
+          token: ${{ secrets.RELEASE_PLEASE }}
+          config-file: .github/release-please-config.json
+          manifest-file: .github/.release-please-manifest.json
+
+      - name: Update compose.yml
+        if: steps.release.outputs.releases_created
+        run: |
+          VERSION=${{ steps.release.outputs.version }}
+          echo "New version: $VERSION"
+          yq eval '.services.utaaf-app.image = "utaaf:'"$VERSION''" -i compose.yml
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add compose.yml
+          git commit -m "chore: update compose.yml version to utaaf_app:$VERSION"
+          git push
