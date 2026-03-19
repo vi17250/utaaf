@@ -1,0 +1,8 @@
+services:
+  utaaf-app:
+    build:
+      context: .
+    image: utaaf:${APP_VERSION}
+    container_name: utaaf_container
+    ports:
+      - '3000:3000'
