@@ -1,7 +1,5 @@
 # UTAAF (*U*rl *T*o *A*scii *A*rt *Format*)
 
-🐣 I'm currently under development, please wait 🐣
-
 <img width="643" height="563" alt="Copie d&#39;écran_20260319_145220" src="https://github.com/user-attachments/assets/5ceb2fa2-ca7a-4c22-a2a7-322f18b09e13" />
 
 
