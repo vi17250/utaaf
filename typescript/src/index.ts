@@ -16,9 +16,17 @@ export const html = `
     <h1>utaaf 🐣</h1>
     <h2>Url To Ascii Art Format</h2>
     <form action="/" method="post">
-    <label for="url">Enter a image URL:</label>
-    <input type="text" id="url" name="incoming_value"/>
-    <input type="submit" value="Submit">
+        <p>
+            <label for="url">Enter a image URL:</label>
+            <input type="text" id="url" name="incoming_value"/>
+        </p>
+        <p>
+            <label for="scale">Scale (between 1 and 10)</label>
+            <input type="number" id="scale" name="scale" min="2" max="10" value="2"/>
+        </p>
+        <p>
+            <input type="submit" value="Submit">
+        </p>
     </form>
     <footer>
     <p>Version: <em>${packageInfo.version}</em></p>

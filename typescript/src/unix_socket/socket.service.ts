@@ -1,6 +1,7 @@
 import { ConfigService } from "@nestjs/config";
 import { Injectable } from "@nestjs/common";
 import { Socket } from "net";
+import { Payload } from "./types";
 
 const HEADER_SIZE = 4;
 
@@ -14,7 +15,7 @@ export class SocketService {
 
     async connect(): Promise<void> {
         const socketPath = this.configService.get<string>("SOCKET_PATH");
-        
+
         if (!socketPath) {
             throw new Error("SOCKET_PATH is missing in .env file");
         }
@@ -39,10 +40,19 @@ export class SocketService {
         });
     }
 
-    async send(payload: Buffer): Promise<Buffer> {
+    async send(image: Buffer, scale: number): Promise<Buffer> {
         await this.connect();
         return new Promise((resolve) => {
-            this.client?.write(this.payloadWithHeader(payload, HEADER_SIZE));
+            const payload: Payload = {
+                scale,
+                image: image.toString("hex"),
+            };
+            const buffer: Buffer = Buffer.from(JSON.stringify(payload));
+            const data: Buffer = this.payloadWithHeader(
+                buffer,
+                HEADER_SIZE,
+            );
+            this.client?.write(data);
             this.client?.once("data", (data) => {
                 resolve(data);
                 this.client?.destroy();

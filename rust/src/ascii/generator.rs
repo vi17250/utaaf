@@ -10,6 +10,7 @@ use super::utils::{to_average_rgb, to_char};
 ///
 /// # Argument
 /// * `image` the DynamycImage
+/// * `scale` the scale used to reduce the resolution
 ///
 /// # Result
 /// * `String` the ascii representation of the image
@@ -21,9 +22,8 @@ use super::utils::{to_average_rgb, to_char};
 ///     let ascii = generate(img);
 ///     println!("{}", ascii);
 /// ```
-pub fn generate(image: DynamicImage) -> String {
+pub fn generate(image: DynamicImage, scale: u32) -> String {
     let (width, height) = image.dimensions();
-    let scale = 2;
     let mut matrix: String = String::new();
     for y in 0..height {
         for x in 0..width {
