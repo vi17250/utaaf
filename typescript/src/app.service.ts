@@ -7,8 +7,8 @@ export class AppService {
         private readonly fetcher: ImageService,
     ) {}
 
-    async create(image_url: string): Promise<string> {
-        const imageResponse = await this.fetcher.FetchAndSave(image_url);
+    async create(image_url: string, scale: number): Promise<string> {
+        const imageResponse = await this.fetcher.FetchAndSave(image_url, scale);
         return imageResponse;
     }
 }

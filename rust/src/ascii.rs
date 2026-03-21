@@ -1,15 +1,17 @@
 use image::load_from_memory;
 
+use crate::server::structs::Payload;
+
 mod generator;
 use generator::generate;
 mod utils;
 
-/// Create a DynamicImage from a buffer and invoke an ASCII generator function
+/// Create a DynamicImage from a payload and invoke an ASCII generator function
 ///
 /// This function needs the [Image](https://crates.io/crates/image) crate.
 ///
 /// # Argument
-/// * `buffer` the data buffer of the image
+/// * `payload` the struct including `image` and `scale`
 ///
 /// # Result
 /// * `Ok(String)` the ascii representation of the image
@@ -24,8 +26,9 @@ mod utils;
 ///     let result = create(buffer)?;
 ///     println!("Résultat: {}", result);
 /// }
-pub fn create(buffer: Vec<u8>) -> Result<String, Box<dyn std::error::Error>> {
-    let image = load_from_memory(&buffer)?;
-    let result = generate(image);
+pub fn create(payload: Payload) -> Result<String, Box<dyn std::error::Error>> {
+    let image = load_from_memory(&payload.image)?;
+    let scale = payload.scale;
+    let result = generate(image, scale);
     Ok(result)
 }

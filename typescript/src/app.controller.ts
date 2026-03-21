@@ -38,6 +38,7 @@ export class AppController {
         try {
             const imageResponse: string = await this.appService.create(
                 url.incoming_value,
+                url.scale
             );
             res.setHeader("Content-Type", "text/plain; charset=utf-8");
             res.setHeader(
