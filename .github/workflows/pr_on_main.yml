@@ -2,9 +2,7 @@ name: _PR_ on main
 
 on:
   pull_request:
-    branches:
-      - main
-
+    branches: ["main"]
 permissions:
   contents: write
   pull-requests: write
