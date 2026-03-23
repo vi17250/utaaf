@@ -22,7 +22,7 @@ export class ImageService {
         fileTypeValidator(image);
         const bufferResponse = await this.socket.send(
             image,
-            incoming_value.scale,
+            incoming_value.resolution,
         );
         const jsonData: ImageResponse = JSON.parse(bufferResponse.toString());
         const responseDto = plainToInstance(ResponseDto, jsonData);

@@ -9,7 +9,7 @@ use crate::server::structs::Payload;
 
 #[derive(Deserialize, Debug)]
 struct RequestPayload {
-    scale: u32,
+    resolution: u32,
     image: String,
 }
 
@@ -26,7 +26,7 @@ struct RequestPayload {
 /// * `stream` a mutable reference to a UnixStream
 ///
 /// # Return
-/// * `Ok(Payload)` the payload containing the image Buffer and the scale value
+/// * `Ok(Payload)` the payload containing the image Buffer and the resolution value
 /// * `Err(std::io::Error)` A specialized Error type I/O operations
 ///
 /// # Exemple
@@ -55,7 +55,7 @@ pub async fn extract(stream: &mut UnixStream) -> io::Result<Payload> {
     };
     let image = hex::decode(request_payload.image).expect("Failed to decode Image");
     let payload = Payload {
-        scale: request_payload.scale,
+        resolution: request_payload.resolution,
         image,
     };
     Ok(payload)

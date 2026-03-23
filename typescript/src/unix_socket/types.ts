@@ -1,4 +1,4 @@
 export type Payload = {
-    scale: number, 
+    resolution: number, 
     image: string
 }

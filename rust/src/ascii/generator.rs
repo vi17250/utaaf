@@ -4,13 +4,13 @@ use super::utils::{to_average_rgb, to_char};
 
 /// Generate an ascii representation of a DynamicImage
 ///
-/// This function scans an image pixel by pixel using a scale based sampling
+/// This function scans an image pixel by pixel using a resolution based sampling
 /// and returns a character based on the pixel luminosity
 /// It needs the [Image](https://crates.io/crates/image) crate.
 ///
 /// # Argument
 /// * `image` the DynamycImage
-/// * `scale` the scale used to reduce the resolution
+/// * `resolution` the resolution used to reduce the resolution
 ///
 /// # Result
 /// * `String` the ascii representation of the image
@@ -22,18 +22,18 @@ use super::utils::{to_average_rgb, to_char};
 ///     let ascii = generate(img);
 ///     println!("{}", ascii);
 /// ```
-pub fn generate(image: DynamicImage, scale: u32) -> String {
+pub fn generate(image: DynamicImage, resolution: u32) -> String {
     let (width, height) = image.dimensions();
     let mut matrix: String = String::new();
     for y in 0..height {
         for x in 0..width {
-            if y % (scale * 2) == 0 && x % scale == 0 {
+            if y % (resolution * 2) == 0 && x % resolution == 0 {
                 let pixel = image.get_pixel(x, y);
                 let char = to_char(to_average_rgb(pixel));
                 matrix.push_str(char);
             }
         }
-        if y % (scale * 2) == 0 {
+        if y % (resolution * 2) == 0 {
             matrix.push('\n');
         }
     }
