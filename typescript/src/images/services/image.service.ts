@@ -6,20 +6,24 @@ import { SocketService } from "src/unix_socket/socket.service";
 import { ResponseDto } from "src/dto/response.dto";
 
 import { type ImageResponse } from "../interfaces/image.interface";
+import { Incoming_values } from "src/types/incoming";
 
 @Injectable()
 export class ImageService {
     constructor(private readonly socket: SocketService) {}
 
-    async FetchAndSave(url: string, scale: number): Promise<string> {
-        const response = await fetch(url);
+    async FetchAndSave(incoming_value: Incoming_values): Promise<string> {
+        const response = await fetch(incoming_value.url);
         if (!response.ok) {
-            throw new Error(`Unable to fetch data ${url}`);
+            throw new Error(`Unable to fetch data ${incoming_value.url}`);
         }
         const buffer = await response.arrayBuffer();
         const image = Buffer.from(buffer);
         fileTypeValidator(image);
-        const bufferResponse = await this.socket.send(image, scale);
+        const bufferResponse = await this.socket.send(
+            image,
+            incoming_value.scale,
+        );
         const jsonData: ImageResponse = JSON.parse(bufferResponse.toString());
         const responseDto = plainToInstance(ResponseDto, jsonData);
         const errors = await validate(responseDto);

@@ -18,7 +18,7 @@ export const html = `
     <form action="/" method="post">
         <p>
             <label for="url">Enter a image URL:</label>
-            <input type="text" id="url" name="incoming_value"/>
+            <input type="text" id="url" name="url"/>
         </p>
         <p>
             <label for="scale">Scale (between 1 and 10)</label>

@@ -11,10 +11,11 @@ import { type Response } from "express";
 
 import { html } from "src/index";
 
-import { UrlDto } from "./dto/url.dto";
+import { Incoming_values } from "./dto/incoming.dto";
 import { UrlValidationPipe } from "./pipes/urValidation.pipe";
 
 import { AppService } from "./app.service";
+
 
 @Controller()
 export class AppController {
@@ -32,13 +33,12 @@ export class AppController {
 
     @Post()
     async create(
-        @Body(new UrlValidationPipe()) url: UrlDto,
+        @Body(new UrlValidationPipe()) incoming: Incoming_values,
         @Res({ passthrough: true }) res: Response,
     ): Promise<void> {
         try {
             const imageResponse: string = await this.appService.create(
-                url.incoming_value,
-                url.scale
+                incoming,
             );
             res.setHeader("Content-Type", "text/plain; charset=utf-8");
             res.setHeader(
