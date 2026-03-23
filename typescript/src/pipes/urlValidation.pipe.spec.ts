@@ -17,7 +17,7 @@ describe("url validation pipe", () => {
     it("should pass validation for a correct URL", async () => {
         const validDto: Incoming_values = {
             url: "https://example.com/path",
-            scale: 2,
+            resolution: 2,
         };
         const result = await pipe.transform(validDto, {
             type: "body",
@@ -27,17 +27,17 @@ describe("url validation pipe", () => {
     });
 
     it("should throw new BadRequestException for incorrect url", async () => {
-        const invalidDto: Incoming_values = { url: "invalid-url", scale: 2 };
+        const invalidDto: Incoming_values = { url: "invalid-url", resolution: 2 };
         await expect(pipe.transform(invalidDto, {
             type: "body",
             metatype: Incoming_values,
         })).rejects.toThrow(BadRequestException);
     });
 
-    it("should throw new BadRequestException for incorrect scale", async () => {
+    it("should throw new BadRequestException for incorrect resolution", async () => {
         const invalidDto: Incoming_values = {
             url: "https://example.com/path",
-            scale: 1,
+            resolution: 1,
         };
         await expect(pipe.transform(invalidDto, {
             type: "body",
