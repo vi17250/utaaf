@@ -8,7 +8,7 @@ permissions:
   pull-requests: write
 
 jobs:
-  update-cargo-lock:
+  update-cargo-lock-and-compose-yml:
     if: startsWith(github.event.pull_request.title, 'chore(main):')
     runs-on: ubuntu-latest
     steps:
@@ -24,9 +24,9 @@ jobs:
       - name: Extract version from manifest
         id: version
         run: |
-          VERSION=$( jq -r '."."'.release-please-manifest.json)
+          VERSION=$(jq -r '.["."] // .["./"]' .release-please-manifest.json)
           echo "version=$VERSION" >> $GITHUB_OUTPUT
-          echo "Detected version: $VERSION"
+          echo "New version: $VERSION"
 
       - name: Update compose.yml with new version
         run: |
