@@ -24,7 +24,7 @@ jobs:
       - name: Extract version from manifest
         id: version
         run: |
-          VERSION=$(jq -r '.["."] // .["./"]' .release-please-manifest.json)
+          VERSION=$(jq -r '.["."] // .["./"]' .github/.release-please-manifest.json)
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           echo "New version: $VERSION"
 
