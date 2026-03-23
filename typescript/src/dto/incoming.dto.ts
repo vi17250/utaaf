@@ -13,7 +13,7 @@ export class Incoming_values {
   @IsNumber()
   @Min(2)
   @Max(10)
-  scale: number;
+  resolution: number;
 
 
   @IsNotEmpty()

@@ -40,11 +40,11 @@ export class SocketService {
         });
     }
 
-    async send(image: Buffer, scale: number): Promise<Buffer> {
+    async send(image: Buffer, resolution: number): Promise<Buffer> {
         await this.connect();
         return new Promise((resolve) => {
             const payload: Payload = {
-                scale,
+                resolution,
                 image: image.toString("hex"),
             };
             const buffer: Buffer = Buffer.from(JSON.stringify(payload));

@@ -11,7 +11,7 @@ mod utils;
 /// This function needs the [Image](https://crates.io/crates/image) crate.
 ///
 /// # Argument
-/// * `payload` the struct including `image` and `scale`
+/// * `payload` the struct including `image` and `resolution`
 ///
 /// # Result
 /// * `Ok(String)` the ascii representation of the image
@@ -28,7 +28,7 @@ mod utils;
 /// }
 pub fn create(payload: Payload) -> Result<String, Box<dyn std::error::Error>> {
     let image = load_from_memory(&payload.image)?;
-    let scale = payload.scale;
-    let result = generate(image, scale);
+    let resolution = payload.resolution;
+    let result = generate(image, resolution);
     Ok(result)
 }

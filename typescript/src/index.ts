@@ -21,8 +21,8 @@ export const html = `
             <input type="text" id="url" name="url"/>
         </p>
         <p>
-            <label for="scale">Scale (between 1 and 10)</label>
-            <input type="number" id="scale" name="scale" min="2" max="10" value="2"/>
+            <label for="resolution">Resolution (between 1 and 10)</label>
+            <input type="number" id="resolution" name="resolution" min="2" max="10" value="2"/>
         </p>
         <p>
             <input type="submit" value="Submit">
