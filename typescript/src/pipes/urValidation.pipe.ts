@@ -5,21 +5,23 @@ import {
     PipeTransform,
 } from "@nestjs/common";
 
-import { UrlDto } from "../dto/url.dto";
+import { Incoming_values } from "../dto/incoming.dto";
 
 import { validate } from "class-validator";
 import { plainToInstance } from "class-transformer";
 
 @Injectable()
 export class UrlValidationPipe implements PipeTransform {
-    async transform(value: UrlDto, { metatype }: ArgumentMetadata) {
+    async transform(value: Incoming_values, { metatype }: ArgumentMetadata) {
         if (!metatype || !this.toValidate(metatype)) {
             return value;
         }
         const object = plainToInstance(metatype, value);
         const errors = await validate(object);
         if (errors.length > 0) {
-            throw new BadRequestException({ message: `"${value.incoming_value}" is not a correct URL` });
+            throw new BadRequestException({
+                message: `"${value.url}" is not a correct URL`,
+            });
         }
         return value;
     }

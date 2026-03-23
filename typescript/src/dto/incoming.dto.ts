@@ -1,12 +1,12 @@
-import { IsNotEmpty, IsNumber, IsString, Max, Min } from "class-validator";
+import { IsNotEmpty, IsNumber, IsUrl, Max, Min } from "class-validator";
 import { Transform } from "class-transformer";
 
-export class UrlDto {
+export class Incoming_values {
   @Transform(({ value }) => {
     if (!value) return 2
     const num = Number(value);
     if (isNaN(num)) {
-      throw new Error("Scale must be a number");
+      throw new Error(`${value} is not a number`);
     }
     return num;
   })
@@ -16,7 +16,7 @@ export class UrlDto {
   scale: number;
 
 
-  @IsString()
   @IsNotEmpty()
-  incoming_value: string;
+  @IsUrl()
+  url: string;
 }

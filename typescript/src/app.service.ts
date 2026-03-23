@@ -1,5 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { ImageService } from "./images/services/image.service";
+import { type Incoming_values } from "./types/incoming";
 
 @Injectable()
 export class AppService {
@@ -7,8 +8,8 @@ export class AppService {
         private readonly fetcher: ImageService,
     ) {}
 
-    async create(image_url: string, scale: number): Promise<string> {
-        const imageResponse = await this.fetcher.FetchAndSave(image_url, scale);
+    async create(incoming_values: Incoming_values): Promise<string> {
+        const imageResponse = await this.fetcher.FetchAndSave(incoming_values);
         return imageResponse;
     }
 }
