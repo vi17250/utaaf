@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.2.0](https://github.com/vi17250/utaaf/compare/v1.1.0...v1.2.0) (2026-03-23)
+
+
+### Features
+
+* 🎸 index explains how to use it ([0a3931d](https://github.com/vi17250/utaaf/commit/0a3931dd0a6553b5d7266a816219fd2c558bd3a2))
+* 🎸 update cargo.lock and compose.yml ([c05a51a](https://github.com/vi17250/utaaf/commit/c05a51ac1a6fdfb05b867494d9e82a6eedc27c74))
+* 🎸 Update Cargo.toml in CI ([55c0600](https://github.com/vi17250/utaaf/commit/55c0600769b99f0bf0290b4fd3ce4421f45058b6))
+* 🎸 update compose.yml ([2f6221a](https://github.com/vi17250/utaaf/commit/2f6221a5e32b4beb6f1e358f5d9b254047de3fb3))
+
+
+### Bug Fixes
+
+* 🐛 clean JQ in CI file ([7c4383d](https://github.com/vi17250/utaaf/commit/7c4383de3a3874ce44ac3b4265d3ec681eb7d67d))
+* 🐛 syntaxe un CI file ([cc7a8eb](https://github.com/vi17250/utaaf/commit/cc7a8ebf31c4518551125443ff229e6b05de61ba))
+
 ## [1.1.0](https://github.com/vi17250/utaaf/compare/v1.0.0...v1.1.0) (2026-03-23)
 
 
