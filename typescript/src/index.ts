@@ -19,7 +19,6 @@ export const html = `
 
 <body>
     <h1>Utaaf 🐣</h1>
-    <h2>Url To Ascii Art Format</h2>
     <div>
         <h3>How to use me:</h3>
         <p>
