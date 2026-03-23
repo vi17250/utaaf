@@ -27,4 +27,5 @@ jobs:
           manifest-file: .github/.release-please-manifest.json
       
       - name: Update Cargo.lock
-        run: cargo update
+        working-directory: ./rust
+        run: cargo update --workspace
