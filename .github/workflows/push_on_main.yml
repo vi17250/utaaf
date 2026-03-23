@@ -25,3 +25,6 @@ jobs:
           token: ${{ secrets.RELEASE_PLEASE }}
           config-file: .github/release-please-config.json
           manifest-file: .github/.release-please-manifest.json
+      
+      - name: Update Cargo.lock
+        run: cargo update

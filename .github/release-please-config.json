@@ -12,11 +12,6 @@
           "type": "toml",
           "path": "rust/Cargo.toml",
           "jsonpath": "$.package.version"
-        },
-        {
-          "type": "toml",
-          "path": "rust/Cargo.lock",
-          "jsonpath": "$.package.version"
         }
       ]
     }
