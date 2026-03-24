@@ -1,4 +1,3 @@
-use serde::Serialize;
 use std::io;
 use tokio::io::AsyncWriteExt;
 use tokio::net::UnixStream;
@@ -6,11 +5,6 @@ use tokio::net::UnixStream;
 use crate::ascii;
 
 use crate::server::payload;
-
-#[derive(Serialize)]
-struct BufferResponse {
-    ascii: String,
-}
 
 /// Invoke an ASCII creator and write the result in a stream
 ///
@@ -41,9 +35,9 @@ pub async fn generate_ascii(mut stream: UnixStream) -> io::Result<()> {
     println!("🔗 Client connected");
     let payload = payload::extract(&mut stream).await?;
 
-    let ascii = ascii::create(payload).expect("Failed to create ascii");
+    let result = ascii::create(payload).expect("Failed to create ascii");
 
-    let response_str = serde_json::to_string(&BufferResponse { ascii })?;
+    let response_str = serde_json::to_string(&result)?;
 
     stream.write_all(response_str.as_bytes()).await?;
     stream.flush().await?;

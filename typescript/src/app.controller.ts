@@ -4,6 +4,7 @@ import {
     Get,
     HttpException,
     HttpStatus,
+    Param,
     Post,
     Res,
 } from "@nestjs/common";
@@ -15,7 +16,7 @@ import { Incoming_values } from "./dto/incoming.dto";
 import { UrlValidationPipe } from "./pipes/urValidation.pipe";
 
 import { AppService } from "./app.service";
-
+import { render } from "./result";
 
 @Controller()
 export class AppController {
@@ -37,15 +38,11 @@ export class AppController {
         @Res({ passthrough: true }) res: Response,
     ): Promise<void> {
         try {
-            const imageResponse: string = await this.appService.create(
+            const imageResponse = await this.appService.create(
                 incoming,
             );
-            res.setHeader("Content-Type", "text/plain; charset=utf-8");
-            res.setHeader(
-                "Content-Disposition",
-                'attachment; filename="image.txt"',
-            );
-            res.send(imageResponse);
+            const renderHtml = render(imageResponse);
+            res.send(renderHtml);
         } catch (e) {
             console.error(e);
             throw new HttpException(
@@ -53,5 +50,19 @@ export class AppController {
                 HttpStatus.INTERNAL_SERVER_ERROR,
             );
         }
+    }
+
+    @Get("files/:name/download")
+    async downloadFile(
+        @Param("name") name: string,
+        @Res() res: Response,
+    ) {
+        const file = await this.appService.getFileContent({ name });
+        res.setHeader("Content-Type", "text/plain");
+        res.setHeader(
+            "Content-Disposition",
+            `attachment; filename="${name}.txt"`,
+        );
+        return res.send(file);
     }
 }
