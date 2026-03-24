@@ -4,6 +4,7 @@ use crate::server::structs::Payload;
 
 mod generator;
 use generator::generate;
+mod structs;
 mod utils;
 
 /// Create a DynamicImage from a payload and invoke an ASCII generator function
@@ -26,7 +27,7 @@ mod utils;
 ///     let result = create(buffer)?;
 ///     println!("Résultat: {}", result);
 /// }
-pub fn create(payload: Payload) -> Result<String, Box<dyn std::error::Error>> {
+pub fn create(payload: Payload) -> Result<structs::Result, Box<dyn std::error::Error>> {
     let image = load_from_memory(&payload.image)?;
     let resolution = payload.resolution;
     let result = generate(image, resolution);
