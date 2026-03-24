@@ -11,6 +11,7 @@ permissions:
 
 jobs:
   test_typescript:
+    if: ${{ github.actor != 'github-actions[bot]' }}
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -26,6 +27,7 @@ jobs:
         run: npm run test
 
   test-rust:
+    if: ${{ github.actor != 'github-actions[bot]' }}
     runs-on: ubuntu-latest
     defaults:
       run:
