@@ -3,12 +3,15 @@ name: _PR_ on main
 on:
   pull_request:
     branches: ["main"]
-    
+
 permissions:
   contents: write
   pull-requests: write
 
 jobs:
+  display_author:
+    - name: Afficher l'auteur de l'événement
+      run: echo "L'acteur GitHub est: ${{ github.actor }}"
   update-cargo-lock-and-compose-yml:
     if: ${{ github.actor == 'github-actions[bot]' }}
     runs-on: ubuntu-latest
@@ -42,7 +45,7 @@ jobs:
 
       - name: Update package-lock.json
         working-directory: ./typescript
-        run:  npm install --package-lock-only
+        run: npm install --package-lock-only
 
       - name: Commit and push changes
         run: |
