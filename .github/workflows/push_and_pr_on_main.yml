@@ -11,6 +11,7 @@ permissions:
 
 jobs:
   test_typescript:
+    if: "!startsWith(github.event.pull_request.title, 'chore(main):')"
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -26,6 +27,7 @@ jobs:
         run: npm run test
 
   test-rust:
+    if: "!startsWith(github.event.pull_request.title, 'chore(main):')"
     runs-on: ubuntu-latest
     defaults:
       run:
