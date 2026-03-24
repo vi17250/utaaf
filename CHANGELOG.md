@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.2.0](https://github.com/vi17250/utaaf/compare/v0.1.0...v0.2.0) (2026-03-24)
+
+
+### Features
+
+* 🎸 Display informations about the conversion in UI ([ded35b9](https://github.com/vi17250/utaaf/commit/ded35b9e422f55d381070f4360fa5003c89051c3))
+
+
+### Bug Fixes
+
+* 🐛 skip rust and typescript test on chore(main) PR ([ab9ddee](https://github.com/vi17250/utaaf/commit/ab9ddeef814e3bb014543a7aea28e9dc1a157367))
+* 🐛 skip rust and typescript test on release PR ([9df848b](https://github.com/vi17250/utaaf/commit/9df848b7e3299469f4fafbbeb34b46d6c9eed8b6))
+* 🐛 wording and display license in home page ([767feac](https://github.com/vi17250/utaaf/commit/767feac92b0cc7bf6ca312e8ca419be4f6c5cf6b))
+
 ## [1.1.0](https://github.com/vi17250/utaaf/compare/v1.0.0...v1.1.0) (2026-03-23)
 
 
