@@ -10,16 +10,8 @@ permissions:
   contents: read
 
 jobs:
-  afficher_infos:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "🎉 The job was automatically triggered by -> ${{ github.actor }}"
-      - run: echo "🎉 ref is -> ${{ github.ref }}"
-      - run: echo "🎉 refname is -> ${{ github.ref_name }}"
-    
-
   test_typescript:
-    if: ${{ github.actor }} == vi17250
+    if: !startsWith(github.event.pull_request.title, 'chore(main):')
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -35,7 +27,7 @@ jobs:
         run: npm run test
 
   test-rust:
-    if: ${{ github.actor }} == vi17250
+    if: !startsWith(github.event.pull_request.title, 'chore(main):')
     runs-on: ubuntu-latest
     defaults:
       run:
