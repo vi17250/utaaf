@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.2.0](https://github.com/vi17250/utaaf/compare/v0.1.0...v0.2.0) (2026-03-24)
+
+
+### Features
+
+* 🎸 display author ([e4b29a8](https://github.com/vi17250/utaaf/commit/e4b29a820bad5d6730f7c32105240043a89936ab))
+* 🎸 Display informations about the conversion in UI ([ded35b9](https://github.com/vi17250/utaaf/commit/ded35b9e422f55d381070f4360fa5003c89051c3))
+
+
+### Bug Fixes
+
+* 🐛 a new fix ([5c4c105](https://github.com/vi17250/utaaf/commit/5c4c1053eaea550dddcdee901e4abc65886485bc))
+* 🐛 CIA ([3c77c7d](https://github.com/vi17250/utaaf/commit/3c77c7d4c1565d20a2dbdbc330912147eabbb863))
+* 🐛 skip rust and typescript test on chore(main) PR ([ff5b288](https://github.com/vi17250/utaaf/commit/ff5b2880032f7a7e2f4da58da457a8bea32caae6))
+* 🐛 skip rust and typescript test on chore(main) PR ([ab9ddee](https://github.com/vi17250/utaaf/commit/ab9ddeef814e3bb014543a7aea28e9dc1a157367))
+* 🐛 skip rust and typescript test on release PR ([9df848b](https://github.com/vi17250/utaaf/commit/9df848b7e3299469f4fafbbeb34b46d6c9eed8b6))
+* 🐛 wording and display license in home page ([767feac](https://github.com/vi17250/utaaf/commit/767feac92b0cc7bf6ca312e8ca419be4f6c5cf6b))
+
 ## [1.1.0](https://github.com/vi17250/utaaf/compare/v1.0.0...v1.1.0) (2026-03-23)
 
 
