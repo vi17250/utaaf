@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.2.0](https://github.com/vi17250/utaaf/compare/v0.1.0...v0.2.0) (2026-03-24)
+
+
+### Features
+
+* 🎸 Display informations about the conversion in UI ([ded35b9](https://github.com/vi17250/utaaf/commit/ded35b9e422f55d381070f4360fa5003c89051c3))
+
+
+### Bug Fixes
+
+* 🐛 wording and display license in home page ([767feac](https://github.com/vi17250/utaaf/commit/767feac92b0cc7bf6ca312e8ca419be4f6c5cf6b))
+
 ## [1.1.0](https://github.com/vi17250/utaaf/compare/v1.0.0...v1.1.0) (2026-03-23)
 
 
