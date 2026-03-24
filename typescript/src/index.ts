@@ -24,7 +24,7 @@ export const html = `
         <p>
             <ul>
                 <li>
-                    Paste a image url* (exemple: 
+                    Paste a image url* (e.g. 
                     <a href="https://git-scm.com/images/logos/logomark-orange@2x.png" target="_blank">
                         https://git-scm.com/images/logos/logomark-orange@2x.png)
                     </a>
@@ -66,7 +66,7 @@ export const html = `
         </form>
     </div>
     <footer>
-        <p>Version: <em>${packageInfo.version}</em></p>
+    <p>Version: <em>${packageInfo.version}</em> | <em>${packageInfo.license} License</em></p>
     </footer>
 </body>
 
