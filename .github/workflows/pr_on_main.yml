@@ -1,6 +1,8 @@
 name: _PR_ on main
 
 on:
+  push: 
+    branches: ["main"]
   pull_request:
     branches: ["main"]
     
