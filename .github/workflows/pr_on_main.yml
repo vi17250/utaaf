@@ -6,7 +6,6 @@ on:
     
 permissions:
   contents: write
-  pull-requests: write
 
 jobs:
   update-cargo-lock-and-package-json-and-compose-yml:
@@ -33,6 +32,7 @@ jobs:
         run: |
           sed -i "s|image: .*:.*|image: utaaf:${{ steps.version.outputs.version }}|g" compose.yml
           cat compose.yml
+          
       - name: Install Rust
         uses: dtolnay/rust-toolchain@stable
 
