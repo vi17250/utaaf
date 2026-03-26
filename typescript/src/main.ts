@@ -4,6 +4,8 @@ import { AppModule } from "./app.module";
 import { AllExceptionsFilter } from "./filters.allExceptions";
 import { ValidationPipe } from "@nestjs/common";
 
+// I'm a comment
+
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.useGlobalFilters(new AllExceptionsFilter());
