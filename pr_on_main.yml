@@ -9,10 +9,9 @@ on:
 permissions:
   contents: write
   pull-requests: write
-  statuses: write
 
 jobs:
-  update-cargo-lock-and-compose-yml:
+  update-cargo-lock-and-package-json-and-compose-yml:
     if: startsWith(github.event.pull_request.title, 'chore(main):')
     runs-on: ubuntu-latest
     steps:
