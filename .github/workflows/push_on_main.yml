@@ -23,10 +23,3 @@ jobs:
           token: ${{ secrets.RELEASE_PLEASE }}
           config-file: .github/release-please-config.json
           manifest-file: .github/.release-please-manifest.json
-
-      - name: "Version"
-        run: |
-          echo "Release: ${{ steps.release }}"
-          echo "Release created: ${{ steps.release.outputs.release_created }}"
-          echo "Tag name: ${{ steps.release.outputs.tag_name }}"
-          echo "PR number: ${{ steps.release.outputs.pull_request_number }}"
