@@ -9,48 +9,6 @@ permissions:
   pull-requests: write
 
 jobs:
-  update-cargo-lock-and-package-json-and-compose-yml:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.pull_request.head.ref }}
-          token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Install jq
-        run: sudo apt-get install -y jq
-
-      - name: Extract version from manifest
-        id: version
-        run: |
-          VERSION=$(jq -r '.["."] // .["./"]' .github/.release-please-manifest.json)
-          echo "version=$VERSION" >> $GITHUB_OUTPUT
-          echo "New version: $VERSION"
-
-      - name: Update compose.yml with new version
-        run: |
-          sed -i "s|image: .*:.*|image: utaaf:${{ steps.version.outputs.version }}|g" compose.yml
-          cat compose.yml
-      - name: Install Rust
-        uses: dtolnay/rust-toolchain@stable
-
-      - name: Update Cargo.lock
-        working-directory: ./rust
-        run: cargo update --workspace
-
-      - name: Update package-lock.json
-        working-directory: ./typescript
-        run: npm ci
-
-      - name: Commit and push changes
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add rust/Cargo.lock typescript/package-lock.json compose.yml
-          git commit -m "chore: update Cargo.lock and package.json and compose.yml to V${{ steps.version.outputs.version }}"
-          git push origin HEAD:${{ github.event.pull_request.head.ref }}
-
   release-please:
     runs-on: ubuntu-latest
     steps:
@@ -65,3 +23,10 @@ jobs:
           token: ${{ secrets.RELEASE_PLEASE }}
           config-file: .github/release-please-config.json
           manifest-file: .github/.release-please-manifest.json
+
+      - name: "Version"
+        run: |
+          echo "Release: ${{ steps.release }}"
+          echo "Release created: ${{ steps.release.outputs.release_created }}"
+          echo "Tag name: ${{ steps.release.outputs.tag_name }}"
+          echo "PR number: ${{ steps.release.outputs.pull_request_number }}"
