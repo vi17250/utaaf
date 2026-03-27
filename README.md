@@ -4,11 +4,11 @@
 
 ## Summary
 
-- 🦜 [What it utaaf](#-what-is-utaaf)
-- 🐳 [Use locally with _docker compose_](#-using-docker-compose)
-- 🖥️ [Use locally by starting all servers](#️-starting-all-servers)
-- 🚀 [And then...](#-and-then)
-- 📊 [Sequence diagram](#-sequence-diagram)
+- 🦜 [What it utaaf](#🦜-what-is-utaaf)
+- 🐳 [Use locally with _docker compose_](#🐳-using-docker-compose)
+- 🖥️ [Use locally by starting all servers](#️🖥️-starting-all-servers)
+- 🚀 [And then...](#🚀-and-then)
+- 📊 [Sequence diagram](#📊-sequence-diagram)
 
 ## 🦜 What is utaaf
 
@@ -28,7 +28,7 @@ docker compose up
 
 You need to create _.env_ file, and then you need to start a
 [NestJs](https://nestjs.com/) web Server and a [Rust](https://rust-lang.org/fr/)
-socker server which converts the data into Ascii Art.
+socket server which converts the data into Ascii Art.
 
 #### Prerequisites ⚠️
 
